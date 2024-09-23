@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://br3r10aoce3ro"]
+
+[ext_resource type="PackedScene" uid="uid://2fnaog2kcguq" path="res://scenes/ui/menus/options_menu/options_tools/section.tscn" id="1_8c2ge"]
+[ext_resource type="PackedScene" uid="uid://djpb7h71hc87m" path="res://scenes/ui/menus/options_menu/options_tools/toggle_option.tscn" id="2_pj4jk"]
+[ext_resource type="PackedScene" uid="uid://but5ucfuce7bk" path="res://scenes/ui/menus/options_menu/options_tools/slider_option.tscn" id="2_xem4y"]
+
+[node name="AudioSection" instance=ExtResource("1_8c2ge")]
+
+[node name="MasterVolOption" parent="SectionContainer" index="1" instance=ExtResource("2_xem4y")]
+layout_mode = 2
+option_name = "Master"
+
+[node name="MusicVolOption" parent="SectionContainer" index="2" instance=ExtResource("2_xem4y")]
+layout_mode = 2
+option_name = "Music"
+
+[node name="SFXVolOption" parent="SectionContainer" index="3" instance=ExtResource("2_xem4y")]
+layout_mode = 2
+option_name = "Sound Effects"
+
+[node name="MuteOption" parent="SectionContainer" index="4" instance=ExtResource("2_pj4jk")]
+layout_mode = 2
+option_name = "Mute"

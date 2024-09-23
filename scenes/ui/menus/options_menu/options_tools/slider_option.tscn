@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://but5ucfuce7bk"]
+
+[ext_resource type="PackedScene" uid="uid://dstrdbecjfj7f" path="res://scenes/ui/menus/options_menu/options_tools/base_option.tscn" id="1_xm3uo"]
+
+[node name="SliderOption" instance=ExtResource("1_xm3uo")]
+offset_left = 0.0
+offset_right = 86.0
+type = 3
+default_value = 0.5
+
+[node name="OptionContainer" parent="." index="0"]
+size_flags_vertical = 4
+
+[node name="HSlider" type="HSlider" parent="OptionContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 50.0

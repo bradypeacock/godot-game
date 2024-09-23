@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://dorlg3naen1hc"]
+
+[ext_resource type="Script" path="res://scenes/ui/menus/menu_control.gd" id="1_hyit1"]
+[ext_resource type="Script" path="res://scenes/ui/menus/main_menu/main_menu.gd" id="2_2femc"]
+[ext_resource type="LabelSettings" uid="uid://dg6hht8nrjq8" path="res://scenes/ui/menus/main_menu/title_card_label_settings.tres" id="2_8vi5t"]
+[ext_resource type="Texture2D" uid="uid://crh2rgrkyoc5" path="res://assets/images/logo_vertical_color_dark.png" id="4_8dgf0"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_2femc")
+game_start_scene_path = "res://scenes/game/levels/level_1/level_1.tscn"
+
+[node name="MenuMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 150
+
+[node name="MenuContainer" type="VBoxContainer" parent="MenuMargin"]
+layout_mode = 2
+
+[node name="TitleContainer" type="VBoxContainer" parent="MenuMargin/MenuContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="MenuMargin/MenuContainer/TitleContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Crypt of blooD"
+label_settings = ExtResource("2_8vi5t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionContainer" type="VBoxContainer" parent="MenuMargin" node_paths=PackedStringArray("pointer")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+alignment = 1
+script = ExtResource("1_hyit1")
+pointer = NodePath("Sprite2D")
+
+[node name="PlayButton" type="Button" parent="MenuMargin/OptionContainer"]
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="MenuMargin/OptionContainer"]
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MenuMargin/OptionContainer"]
+custom_minimum_size = Vector2(128, 40)
+layout_mode = 2
+text = "Quit"
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuMargin/OptionContainer"]
+position = Vector2(-63, 400)
+scale = Vector2(0.119141, 0.0341588)
+texture = ExtResource("4_8dgf0")
+
+[connection signal="pressed" from="MenuMargin/OptionContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuMargin/OptionContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuMargin/OptionContainer/QuitButton" to="." method="_on_quit_button_pressed"]

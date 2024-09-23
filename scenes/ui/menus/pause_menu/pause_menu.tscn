@@ -1,0 +1,252 @@
+[gd_scene load_steps=11 format=3 uid="uid://bur30ch5ukcma"]
+
+[ext_resource type="Script" path="res://scenes/ui/menus/pause_menu/pause_menu.gd" id="1_n3xvk"]
+[ext_resource type="PackedScene" uid="uid://cn8y31fkdj1eq" path="res://scenes/ui/menus/titled_menu.tscn" id="2_atyw5"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="2_g5yos"]
+[ext_resource type="PackedScene" uid="uid://p22l2va8hqim" path="res://scenes/ui/menus/menu_button_control.tscn" id="3_480co"]
+[ext_resource type="PackedScene" uid="uid://bfr8kfd1y2um6" path="res://scenes/ui/menus/options_menu/options_menu.tscn" id="4_wbf88"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qf6vn"]
+shader = ExtResource("2_g5yos")
+shader_parameter/blur = 0.0
+shader_parameter/brightness = 1.0
+
+[sub_resource type="Animation" id="Animation_qybe5"]
+resource_name = "Pause"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/blur")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 0),
+"update": 0,
+"values": [0.0, 2.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/brightness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [1.0, 0.8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%PauseTitledMenu:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%PauseTitledMenu/MenuMargin/OptionContainer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"configure_focus"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pshuw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/blur")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/brightness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%PauseTitledMenu:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_nlult"]
+resource_name = "Unpause"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/blur")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/brightness")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%PauseTitledMenu:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6007"]
+_data = {
+"Pause": SubResource("Animation_qybe5"),
+"RESET": SubResource("Animation_pshuw"),
+"Unpause": SubResource("Animation_nlult")
+}
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_n3xvk")
+title_screen_scene_path = "res://scenes/ui/title_screen/title_screen.tscn"
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_qf6vn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseTitledMenu" parent="Background" instance=ExtResource("2_atyw5")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+
+[node name="Title" parent="Background/PauseTitledMenu/MenuMargin/MenuContainer/TitleContainer" index="0"]
+text = "PAUSED"
+
+[node name="MenuPointer" parent="Background/PauseTitledMenu/MenuMargin/OptionContainer" index="0"]
+position = Vector2(70, 367)
+
+[node name="ResumeGameButton" parent="Background/PauseTitledMenu/MenuMargin/OptionContainer" index="1" instance=ExtResource("3_480co")]
+layout_mode = 2
+text = "Resume Game
+"
+
+[node name="OptionsButton" parent="Background/PauseTitledMenu/MenuMargin/OptionContainer" index="2" instance=ExtResource("3_480co")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Options"
+
+[node name="QuitToMainButton" parent="Background/PauseTitledMenu/MenuMargin/OptionContainer" index="3" instance=ExtResource("3_480co")]
+layout_mode = 2
+text = "Quit to Main Menu"
+
+[node name="QuitToDesktopButton" parent="Background/PauseTitledMenu/MenuMargin/OptionContainer" index="4" instance=ExtResource("3_480co")]
+layout_mode = 2
+text = "Quit to Desktop"
+
+[node name="OptionsMenu" parent="Background" instance=ExtResource("4_wbf88")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../Background")
+libraries = {
+"": SubResource("AnimationLibrary_l6007")
+}
+autoplay = "Unpause"
+
+[connection signal="pressed" from="Background/PauseTitledMenu/MenuMargin/OptionContainer/ResumeGameButton" to="." method="_on_resume_game_button_pressed"]
+[connection signal="pressed" from="Background/PauseTitledMenu/MenuMargin/OptionContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Background/PauseTitledMenu/MenuMargin/OptionContainer/QuitToMainButton" to="." method="_on_quit_to_main_button_pressed"]
+[connection signal="pressed" from="Background/PauseTitledMenu/MenuMargin/OptionContainer/QuitToDesktopButton" to="." method="_on_quit_to_desktop_button_pressed"]
+[connection signal="go_back" from="Background/OptionsMenu" to="." method="_on_options_menu_go_back"]
+
+[editable path="Background/PauseTitledMenu"]

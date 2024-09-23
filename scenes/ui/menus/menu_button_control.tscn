@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://p22l2va8hqim"]
+
+[ext_resource type="Script" path="res://scenes/ui/menus/menu_button_control.gd" id="1_a1i25"]
+
+[node name="TitledMenuButton" type="Button"]
+custom_minimum_size = Vector2(128, 40)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_constants/outline_size = 5
+flat = true
+script = ExtResource("1_a1i25")

@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://2aedmmlai8h"]
+
+[ext_resource type="Script" path="res://scenes/ui/title_screen/title_screen.gd" id="1_0mkxe"]
+[ext_resource type="AudioStream" uid="uid://bwh53pi14c3ly" path="res://assets/ui/title_screen/title_screen_song.mp3" id="2_6ahgw"]
+[ext_resource type="Texture2D" uid="uid://ciiuv0n22qh5i" path="res://assets/ui/title_screen/title_screen_background.png" id="3_nyg75"]
+[ext_resource type="PackedScene" uid="uid://dorlg3naen1hc" path="res://scenes/ui/menus/main_menu/main_menu.tscn" id="4_cod2r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j66xq"]
+line_spacing = 4.0
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0mkxe")
+
+[node name="MusicStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6ahgw")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_nyg75")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VersionContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VersionLabel" type="Label" parent="VersionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+label_settings = SubResource("LabelSettings_j66xq")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="MainMenu" parent="." instance=ExtResource("4_cod2r")]
+layout_mode = 1

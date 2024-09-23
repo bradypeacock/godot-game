@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfr8kfd1y2um6"]
+
+[ext_resource type="Script" path="res://scenes/ui/menus/options_menu/options_menu.gd" id="1_4uc3e"]
+[ext_resource type="Script" path="res://scenes/ui/menus/options_menu/general/general_menu_container.gd" id="4_0oeg6"]
+[ext_resource type="PackedScene" uid="uid://br3r10aoce3ro" path="res://scenes/ui/menus/options_menu/general/audio_section.tscn" id="4_wp141"]
+
+[node name="OptionsMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4uc3e")
+
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionMargin" type="MarginContainer" parent="MenuContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="OptionContainer" type="GridContainer" parent="MenuContainer/OptionMargin"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="BackButton" type="Button" parent="MenuContainer/OptionMargin/OptionContainer"]
+layout_mode = 2
+text = "Back"
+icon_alignment = 1
+
+[node name="OptionTabs" type="TabBar" parent="MenuContainer/OptionMargin/OptionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 0
+clip_tabs = false
+tab_count = 3
+tab_0/title = "General"
+tab_1/title = "Video"
+tab_2/title = "Controls"
+
+[node name="OptionMenuMargin" type="MarginContainer" parent="MenuContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContainer/OptionMenuMargin"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuContainer/OptionMenuMargin/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionScrollContainer" type="ScrollContainer" parent="MenuContainer/OptionMenuMargin/HBoxContainer/PanelContainer"]
+layout_direction = 3
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="GeneralOptionsContainer" type="VBoxContainer" parent="MenuContainer/OptionMenuMargin/HBoxContainer/PanelContainer/OptionScrollContainer"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+script = ExtResource("4_0oeg6")
+
+[node name="AudioSection" parent="MenuContainer/OptionMenuMargin/HBoxContainer/PanelContainer/OptionScrollContainer/GeneralOptionsContainer" instance=ExtResource("4_wp141")]
+layout_mode = 2
+label = "Audio"
+
+[node name="VideoOptionsContainer" type="VBoxContainer" parent="MenuContainer/OptionMenuMargin/HBoxContainer/PanelContainer/OptionScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuContainer/OptionMenuMargin/HBoxContainer/PanelContainer/OptionScrollContainer/VideoOptionsContainer"]
+layout_mode = 2
+text = "VIDEO OPTIONS"
+
+[node name="EmptySpaceFiller" type="Control" parent="MenuContainer/OptionMenuMargin/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="MenuContainer/OptionMargin/OptionContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="tab_selected" from="MenuContainer/OptionMargin/OptionContainer/OptionTabs" to="MenuContainer/OptionMenuMargin/HBoxContainer/PanelContainer/OptionScrollContainer/GeneralOptionsContainer" method="_on_option_tabs_tab_selected"]

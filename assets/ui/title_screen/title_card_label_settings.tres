@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dg6hht8nrjq8"]
+
+[ext_resource type="FontFile" uid="uid://cfue6l0iuv0qh" path="res://assets/ui/fonts/Lady Radical.ttf" id="1_7a82s"]
+
+[resource]
+font = ExtResource("1_7a82s")
+font_size = 100
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(2, 2)
